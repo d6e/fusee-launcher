@@ -30,6 +30,7 @@
 
 import os
 import sys
+import time
 import errno
 import ctypes
 import argparse
@@ -473,6 +474,7 @@ class RCMHax:
             if wait_for_device:
                 print("Waiting for a TegraRCM device to come online...")
                 while self.dev is None:
+                    time.sleep(0.5)
                     self.dev = self._find_device(vid, pid)
 
             # ... or bail out.
